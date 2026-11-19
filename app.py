@@ -8,7 +8,7 @@ st.set_page_config(layout="wide")
 
 st.title("🏀 アジアの奇跡（日本） vs グローバルガーディアン（アメリカ）")
 
-# ===== 試合会場の画像 =====
+# 試合会場の画像 
 image_path = "./images/basketball_game.png"
 
 if os.path.exists(image_path):
@@ -21,7 +21,22 @@ if os.path.exists(image_path):
 else:
     st.warning("試合会場の画像が見つかりません")
 
-# ===== 試合開始ボタン =====
+# チーム・ポジション別の選手データ
+rosters = {
+    "日本": {
+        "PG": "河村 勇輝",
+        "SG": "富永 啓生",
+        "SF": "渡邊 雄太",
+        "PF": "八村 塁",
+        "C": "ジョシュ・ホーキンソン"
+    },
+    "アメリカ": {
+        "PG": "ステフィン・カリー",
+        "SG": "アンソニー・エドワーズ",
+        "SF": "レブロン・ジェームス",
+        "PF": "ケビン・デュラント"
+
+# 試合開始ボタン
 if st.button("🔥 試合開始（ティップオフ！）", type="primary"):
     japan_total = 0
     global_total = 0
