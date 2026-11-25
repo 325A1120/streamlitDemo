@@ -143,7 +143,7 @@ if st.button("🔥 試合開始（ティップオフ！）", type="primary"):
         st.balloons()  # 勝利時に風船を飛ばす
         st.success(f"🏆 **{japan_total} - {global_total}** で アジアの奇跡（日本）の勝利！！")
     elif japan_total < global_total:
-        st.rain()
+        st.snow
         st.error(f"💀 **{japan_total} - {global_total}** で グローバルガーディアン（アメリカ）の勝利…")
     else:
         st.info(f"🤝 **{japan_total} - {global_total}** で 引き分け！")
