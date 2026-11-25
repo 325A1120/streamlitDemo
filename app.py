@@ -24,20 +24,46 @@ else:
 # チーム・ポジション別の選手データ
 rosters = {
     "日本": {
-        "PG": "河村 勇輝",
-        "SG": "富永 啓生",
-        "SF": "渡邊 雄太",
-        "PF": "八村 塁",
-        "C": "ジョシュ・ホーキンソン"
+        "PG": {"name": "河村 勇輝", "team": "サンディエゴ・クリッパーズ（Gリーグ）"},
+        "SG": {"name": "富永 啓生", "team": "レバンガ北海道"},
+        "SF": {"name": "渡邊 雄太", "team": "千葉ジェッツ"},
+        "PF": {"name": "八村 塁", "team": "ロサンゼルス・クリッパーズ"},
+        "C": {"name": "ジョシュ・ホーキンソン", "team": "東京サンロッカーズ"},
     },
     "アメリカ": {
-        "PG": "ステフィン・カリー",
-        "SG": "アンソニー・エドワーズ",
-        "SF": "レブロン・ジェームス",
-        "PF": "ケビン・デュラント",
-        "C": "ジョエル・エンビード"
-    }
+        "PG": {"name": "ステフィン・カリー", "team": "ゴールデンステート・ウォリアーズ"},
+        "SG": {"name": "アンソニー・エドワーズ", "team": "ミネソタ・ティンバーウルブズ"},
+        "SF": {"name": "レブロン・ジェームス", "team": "フィラデルフィア・76ers"},
+        "PF": {"name": "ケビン・デュラント", "team": "ヒューストン・ロケッツ"},
+        "C": {"name": "ジョエル・エンビード", "team": "フィラデルフィア・76ers"},
+    },
 }
+
+# 画像の直下に選手情報を表示
+st.subheader("📋 出場選手・現在の所属チーム")
+col_jp, col_us = st.columns(2)
+
+with col_jp:
+    st.markdown("**🇯🇵 アジアの奇跡（日本）**")
+    st.dataframe(
+        [
+            {"POS": pos, "選手": info["name"], "所属チーム": info["team"]}
+            for pos, info in rosters["日本"].items()
+        ],
+        hide_index=True,
+        use_container_width=True,
+    )
+
+with col_us:
+    st.markdown("**🇺🇸 グローバルガーディアン（アメリカ）**")
+    st.dataframe(
+        [
+            {"POS": pos, "選手": info["name"], "所属チーム": info["team"]}
+            for pos, info in rosters["アメリカ"].items()
+        ],
+        hide_index=True,
+        use_container_width=True,
+    )
 
 # 試合開始ボタン
 if st.button("🔥 試合開始（ティップオフ！）", type="primary"):
